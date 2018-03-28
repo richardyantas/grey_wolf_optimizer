@@ -10,22 +10,21 @@ using namespace std;
 
 namespace optimization
 {
-	solution grey_wolf_optimizer(function f, int max_number_of_evaluations,int number_of_agents, float left_bound, float right_bound,int dimension)
+	solution grey_wolf_optimizer(function f, int max_number_of_iterations,int number_of_agents, double left_bound, double right_bound,int dimension)
 	{
-		vector<float> alpha_pos(dimension,0);
-		vector<float> beta_pos(dimension,0);
-		vector<float> delta_pos(dimension,0);
+		vector<double> alpha_pos(dimension,0);
+		vector<double> beta_pos(dimension,0);
+		vector<double> delta_pos(dimension,0);
 
-		float alpha_score = numeric_limits<float>::infinity();
-		float beta_score  = numeric_limits<float>::infinity();
-		float delta_score = numeric_limits<float>::infinity();
+		double alpha_score = numeric_limits<double>::infinity();
+		double beta_score  = numeric_limits<double>::infinity();
+		double delta_score = numeric_limits<double>::infinity();
 
-
-		auto positions = get_initial_positions(left_bound, right_bound, dimension, number_of_agents);
+		auto positions = get_initial_positions(left_bound, right_bound, dimension, number_of_agents); // vector<vector<double>> 
 		solution s{};
 		int iteration{0};
 
-		const int max_number_of_iterations{max_number_of_evaluations/number_of_agents};
+		//const int max_number_of_iterations{max_number_of_evaluations/number_of_agents};
 
 		while(iteration++ < max_number_of_iterations)
 		{
@@ -93,8 +92,9 @@ namespace optimization
 	            }
 
 	        s.convergence.push_back(alpha_score);
-	        s.best = alpha_score;
+	        s.best = alpha_score;	        
 		}
+		s.best_pos = alpha_pos;
 		return s;
 	}
 }
