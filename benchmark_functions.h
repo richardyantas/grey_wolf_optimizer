@@ -13,9 +13,9 @@ namespace optimization
 		function3
 	};
 
-	float ackley(const vector<float> &input);
-	float schwefel(const vector<float> &input);
-	float function3(const vector<float> &input);
+	double ackley(const vector<double> &input);
+	double schwefel(const vector<double> &input);
+	double function3(const vector<double> &input);
 
-	float objective_function(function f, const vector<float> &input);
+	double objective_function(function f, const vector<double> &input);
 }
