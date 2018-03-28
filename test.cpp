@@ -68,9 +68,9 @@ int main()
 
 	optimization::function f = optimization::function::schwefel;
 
-	for(int n = 4; n < 100; n++)
+	for(int n = 100; n < 101; n++)
 	{
-		solution s = grey_wolf_optimizer(f,100,n,-500.0,500.0,2);	
+		solution s = grey_wolf_optimizer(f,50,n,-500.0,500.0,2);	
 		cout << "it: " << n << endl;
 		cout << s.best << endl;
 		for(int i = 0; i < s.best_pos.size(); i++)
